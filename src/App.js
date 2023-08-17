@@ -6,6 +6,8 @@ import Header from './components/Header';
 import Restaurants from './pages/Restaurants';
 import RestaurantDetails from './pages/RestaurantDetails';
 import Cart from './components/Cart';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 // import Navigationsidebar from './components/Navigationsidebar';
 // import RestarantCArd from './components/RestarantCArd';
 
@@ -17,6 +19,9 @@ function App() {
       <Header/>
       <Routes>
         <Route path='/' element={<Restaurants/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signUp' element={<SignUp/>}/>
+
         <Route path='/restaurant/:id' element={<RestaurantDetails/>}/>
         <Route path='/cart' element={<Cart/>}/>
       </Routes>

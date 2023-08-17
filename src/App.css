@@ -22,12 +22,14 @@
   align-items: center;
 }
 
-.application-header > .branding > img {
-  height: 50px;
-}
+/* .application-header > .branding > .img {
+  height: 60px;
+} */
 
 .application-header > .branding > p {
-  font-size: 1.5rem;
+  margin-top: 8px;
+  margin-left: 5px;
+  font-size: 1.6rem;
 }
 
 /* APP CONTAINER STYLING */
