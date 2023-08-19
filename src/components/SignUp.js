@@ -13,19 +13,25 @@ import {
 import { url } from "../App";
 
 function SignUp() {
-const [role,setRole]=useState("Select an Option")
-const status=(role)=>{
-    return role==="Admin"?true:false
-  }
+// const [role,setRole]=useState("Select an Option")
+
+
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
     password: "",
     contactNumber:"",
-    adminRole: status(role)
+    adminRole:false
   });
 
-  
+  const handleSelect=(eventKey)=>{
+    if(eventKey==="true"){
+      setUserDetails({...userDetails,adminRole:true})
+    }
+    else{
+      setUserDetails({...userDetails,adminRole:false})
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +54,7 @@ const status=(role)=>{
                     <Form>
                       <Form.Group className="mb-3" controlId="Name">
                         <Form.Label className="text-center">
-                          <h4>Username</h4>
+                          <h5>Username</h5>
                         </Form.Label>
                         <Form.Control
                           type="text"
@@ -64,7 +70,7 @@ const status=(role)=>{
 
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
-                          <h4>Email address</h4>
+                          <h5>Email address</h5>
                         </Form.Label>
                         <Form.Control
                           type="email"
@@ -83,7 +89,7 @@ const status=(role)=>{
                         controlId="formBasicPassword"
                       >
                         <Form.Label>
-                          <h4>Password</h4>
+                          <h5>Password</h5>
                         </Form.Label>
                         <Form.Control
                           type="password"
@@ -101,7 +107,7 @@ const status=(role)=>{
                         controlId="formBasicNumber"
                       >
                         <Form.Label>
-                          <h4>Contact Number</h4>
+                          <h5>Contact Number</h5>
                         </Form.Label>
                         <Form.Control
                           type="text"
@@ -120,24 +126,25 @@ const status=(role)=>{
                       >
                         <DropdownButton
                           id="dropdown-basic-button"
-                          title={userDetails.role}
+                          title="Select"
+                          onSelect={handleSelect}
                           variant="warning"
                         >
                           <Dropdown.Item
-                            onClick={(e) => {
-                                setRole("Admin")
-                            }}
+                          eventKey="true"
+                            // onClick={(e) => {
+                            //     setRole("Admin")
+                            // }}
                           >
                             Admin
                           </Dropdown.Item>
                           <Dropdown.Item
-                            onClick={() => {
-                                setRole("User")
-                            }}
+                          eventKey="false"
                           >
                             User
                           </Dropdown.Item>
                         </DropdownButton>
+                        <p>Access Role:{" "}{userDetails.adminRole?"Admin":"User"}</p>
                       </Form.Group>
                       <div className="d-grid">
                         <Button
