@@ -17,6 +17,7 @@ function Header() {
       <div id='nav-options' className='branding'>
         <IconCta Icon={BiCartAlt} onClick={()=>{navigate('/cart')}}/>
         <IconCta Icon={BiUser}/>
+        <p style={{marginTop:"20px",fontSize:"20px"}}>{localStorage.getItem('username')?localStorage.getItem('username'):""}</p>
       </div>
       </div>
   )

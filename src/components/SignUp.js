@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import {
   Col,
@@ -14,7 +15,7 @@ import { url } from "../App";
 
 function SignUp() {
 // const [role,setRole]=useState("Select an Option")
-
+  const navigate=useNavigate()
 
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -35,7 +36,14 @@ function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios.post(`${url}`)
+    axios.post(`${url}/users/signup`,userDetails)
+    .then((res)=>{
+      console.log(res.data)
+      navigate('/login')
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
     console.log(userDetails);
   };
   return (
@@ -62,9 +70,10 @@ function SignUp() {
                           onChange={(e) => {
                             setUserDetails({
                               ...userDetails,
-                              username: e.target.value,
+                              name: e.target.value,
                             });
                           }}
+                          required
                         />
                       </Form.Group>
 
